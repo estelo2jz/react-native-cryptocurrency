@@ -5,13 +5,11 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import Tabs from "./navigation/tabs";
 
-// function that returns a + b
-
 const Stack = createStackNavigator();
 
 const App = () => {
   return (
-    <NavigationContainer>
+    <NavigationContainer> 
       <Stack.Navigator
         screenOptions={{
           headerShown: false
@@ -29,7 +27,7 @@ const App = () => {
         <Stack.Screen
           name="Transaction"
           component={Transaction}
-        />
+        />                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
       </Stack.Navigator>
     </NavigationContainer>
   )
