@@ -12,18 +12,19 @@ import {
 
 import { dummyData, COLORS, SIZES, FONTS, icons, images } from '../constants'; 
 
-import { PriceAlert } from '../components';
+import { PriceAlert, TransactionHistory } from '../components';
 
 const Home = ({ navigation }) => {
 
-  const [trending, setTrending] = React.useState(dummyData.trendingCurrencies)
+  const [trending, setTrending] = React.useState(dummyData.trendingCurrencies);
+  const [transactiontHistory, setTransactionHistory] = React.useState(dummyData.transactiontHistory);
 
   function renderHeader() {
 
     const renderItem = ({item, index}) => (
       <TouchableOpacity
         style={{
-          width: 160,
+          width: 170,
           paddingVertical: SIZES.padding,
           paddingHorizontal: SIZES.padding,
           marginLeft: index == 0 ? SIZES.padding : 0,
@@ -219,6 +220,15 @@ const Home = ({ navigation }) => {
     )
   }
 
+  function renderTransactionHistory() {
+    return (
+      <TransactionHistory 
+        customContainerStyle={{ ...styles.shadow }}
+        history={transactiontHistory}
+      />
+    )
+  }
+
   return (
     <ScrollView>
       <View
@@ -230,6 +240,7 @@ const Home = ({ navigation }) => {
         {renderHeader()}
         {renderAlert()}
         {renderNotice()}
+        {renderTransactionHistory()}
       </View>
     </ScrollView>
   )
