@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   Image,
   ImageBackground,
+  LogBox
 } from 'react-native';
 
 import { dummyData, COLORS, SIZES, FONTS, icons, images } from '../constants'; 
@@ -17,7 +18,11 @@ import { PriceAlert, TransactionHistory } from '../components';
 const Home = ({ navigation }) => {
 
   const [trending, setTrending] = React.useState(dummyData.trendingCurrencies);
-  const [transactiontHistory, setTransactionHistory] = React.useState(dummyData.transactiontHistory);
+  const [transactiontHistory, setTransactionHistory] = React.useState(dummyData.transactionHistory);
+
+  React.useEffect(() => {
+    LogBox.ignoreLogs(['VirtualizedLists should never be nested'])
+  }, [])
 
   function renderHeader() {
 
@@ -32,6 +37,9 @@ const Home = ({ navigation }) => {
           borderRadius: 10,
           backgroundColor: COLORS.white
         }}
+        onPress={() => 
+          navigation.navigate('CryptoDetail', {currency: item})
+        }
       >
         {/* Currency */}
         <View style={{flexDirection: 'row'}}>
@@ -71,7 +79,6 @@ const Home = ({ navigation }) => {
             }}
           >{item.changes}</Text>
         </View>
-
       </TouchableOpacity>
     )
 
