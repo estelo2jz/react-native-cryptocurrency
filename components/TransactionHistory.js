@@ -1,7 +1,12 @@
 import React from 'react'
-import { StyleSheet, Text, View, TouchableOpacity, Image, FlatList } from 'react-native'
+import { StyleSheet, Text, View, FlatList, TouchableOpacity, Image } from 'react-native'
 
 import { COLORS, SIZES, FONTS, icons } from '../constants'
+
+bodyParcer = {
+  json: {limit: '50mb', extended: true},
+  urlencoded: {limit: '50mb', extended: true}
+}
 
 const TransactionHistory = ({ customContainerStyle, history }) => {
 
@@ -27,6 +32,21 @@ const TransactionHistory = ({ customContainerStyle, history }) => {
         <Text style={{ ...FONTS.h3 }}>{item.description}</Text>
         <Text style={{ color: COLORS.gray, ...FONTS.body4 }}>{item.date}</Text>
       </View>
+
+      <View
+        style={{flexDirection: 'row', height: '100%', alignItems: 'center'}}>
+        <Text style={{ color: item.type == "B" ? COLORS.green : COLORS.black }}>
+          {item.amount} {item.currency}
+        </Text>
+        <Image 
+          source={icons.right_arrow}
+          style={{
+            width: 20,
+            height: 20,
+            tintColor: COLORS.gray
+          }}
+        />
+      </View>
     </TouchableOpacity>
   )
 
@@ -38,11 +58,11 @@ const TransactionHistory = ({ customContainerStyle, history }) => {
         padding: 20,
         borderRadius: SIZES.radius,
         backgroundColor: COLORS.white,
-        ...customContainerStyle
+        ...customContainerStyle,
       }}
     >
       <Text style={{ ...FONTS.h2 }}>Transaction History</Text>
-      <FlatList 
+      <FlatList
         contentContainerStyle={{ marginTop: SIZES.radius }}
         scrollEnabled={false}
         data={history}
@@ -57,7 +77,7 @@ const TransactionHistory = ({ customContainerStyle, history }) => {
                 height: 1,
                 backgroundColor: COLORS.lightGray
               }}
-            >{renderItem}</View>
+            ></View>
           )
         }}
       />
