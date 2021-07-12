@@ -8,6 +8,16 @@ import Tabs from "./navigation/tabs";
 
 const Stack = createStackNavigator();
 
+// app.use(bodyParser.json({
+//   limit: '50mb'
+// }));
+
+// app.use(bodyParser.urlencoded({
+//   limit: '50mb',
+//   parameterLimit: 100000,
+//   extended: true
+// }));
+
 const App = () => {
 
   // React.useEffect(() => {
