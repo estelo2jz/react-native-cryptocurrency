@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
-import { dummyData, COLORS, SIZES, FONTS, icons } from '../constants';
+import { COLORS, SIZES, FONTS, icons } from '../constants';
 
 
 const TextButton = ({ label, customContainerStyle, customLabelStyle, onPress }) => {
